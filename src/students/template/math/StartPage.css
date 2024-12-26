@@ -1,0 +1,89 @@
+.startPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("/space.jpg") no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  font-family: "Arial", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.startPageContainer h2 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.startPageButton {
+  margin: 10px 0;
+  padding: 15px 30px;
+  font-size: 1.5em;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  background-color: #5c6bc0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.startPageButton:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.startPageButton:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.typewriter3-container {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .startPageContainer h2 {
+    font-size: 2.5em;
+  }
+
+  .startPageButton {
+    font-size: 1.3em;
+    padding: 12px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .startPageContainer h2 {
+    font-size: 2em;
+  }
+
+  .startPageButton {
+    font-size: 1.1em;
+    padding: 10px 20px;
+  }
+
+  .typewriter1-container {
+    font-size: 1.3em;
+  }
+}

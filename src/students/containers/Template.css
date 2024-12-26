@@ -1,0 +1,180 @@
+/* Template.css */
+
+* {
+  user-select: none;
+}
+
+.template-container {
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: slideDown 1s ease forwards;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.template-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.template-heading {
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  color: #f1f1f1;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.custom-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 20px;
+  width: 100%;
+  height: 200px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card .ant-card-body {
+  padding: 15px;
+}
+
+.custom-card .ant-card-title {
+  font-size: 1.4em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.custom-card p {
+  margin: 0;
+  color: #333;
+  font-size: 1.1em;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-card.active {
+  border: 5px solid #6366F1;
+  box-shadow: 0 0 15px 5px rgba(99, 102, 241, 0.7), 0 0 30px 10px rgba(99, 102, 241, 0.5);
+}
+
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+}
+
+.typewriter2-container {
+  margin-bottom: 30px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  animation: fadeIn 2s ease forwards;
+}
+
+@media (max-width: 1024px) {
+  .template-heading {
+    font-size: 2em;
+  }
+
+  .custom-card {
+    width: 45%; 
+  }
+
+  .cards-container {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .template-heading {
+    font-size: 1.8em;
+  }
+
+  .custom-card {
+    width: 100%; 
+    margin: 0 auto;
+  }
+
+  .cards-container {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .template-heading {
+    font-size: 1.6em;
+    margin-bottom: 30px;
+  }
+
+  .custom-card {
+    width: 100%; 
+    height: auto; 
+  }
+
+  
+  .cards-container {
+    flex-direction: column; 
+    align-items: center; 
+  }
+}

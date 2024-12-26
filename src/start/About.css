@@ -1,0 +1,108 @@
+
+/* Navbar styles (ensure consistency with Navbar) */
+.ant-layout-header {
+  background-color: #1c1c1c; /* Dark header background */
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+  background-color: #333; /* Darker selected menu item background */
+}
+
+
+.about-us-introduction {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.about-us-title {
+  color: white !important;
+  font-size: 36px;
+}
+
+.title-color{
+  color: white !important;
+}
+
+.about-us-text {
+  color: white !important;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Goals Section */
+.project-goals {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.goals-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.goals-list li {
+  font-size: 18px;
+  color: white !important;
+  margin: 10px 0;
+}
+
+/* Features Section */
+.project-features {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.project-features .ant-card {
+  background-color: #1e1e1e; /* Dark card background */
+  color: white !important;
+}
+
+.project-features .ant-card-title {
+  color: white !important;
+}
+
+/* Technologies Section */
+.technologies-used {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.technologies-used .ant-card {
+  background-color: #1e1e1e;
+  color: white !important;
+}
+
+.technologies-used .ant-card-title {
+  color: white;
+}
+
+/* Team Section */
+.project-team {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.project-team .ant-card {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.project-team .ant-card-title {
+  color: white;
+}
+
+/* Call to Action Section */
+.call-to-action {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.call-to-action .ant-btn-primary {
+  background-color: #1d73c3; /* Primary button color */
+  border-color: #1d73c3;
+}
+
+.call-to-action .ant-btn-primary:hover {
+  background-color: #155a9a; /* Button hover color */
+  border-color: #155a9a;
+}

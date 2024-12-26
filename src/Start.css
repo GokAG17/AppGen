@@ -1,0 +1,176 @@
+/* Start.css */
+
+/* Overall Layout Styling */
+.start-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+.start-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #001529;
+  padding: 0 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-circle {
+  background-color: #1890ff;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Content Styling */
+.start-content {
+  flex: 1;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+/* Start Background Section */
+.start-background {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 50px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Title */
+.start-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color:#ffffff !important;
+}
+
+/* Description Text */
+.start-description {
+  font-size: 1.25rem;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Features Section */
+.features-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.features-row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  color: white;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.feature-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Action Button Section */
+.action-section {
+  margin-top: 30px;
+}
+
+.start-button {
+  font-size: 1.25rem;
+  padding: 15px 40px;
+  background-color: #1890ff;
+  border-radius: 50px;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.start-button:hover {
+  background-color: #40a9ff;
+}
+
+/* Start.css */
+.about-us-section {
+  background-color: #000000;
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 50px;
+}
+
+.about-us-title {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.about-us-description {
+  font-size: 16px;
+  color: #ffffff !important;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .start-title {
+    font-size: 2rem;
+  }
+
+  .features-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .start-background {
+    padding: 30px;
+  }
+
+  .start-button {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+}
