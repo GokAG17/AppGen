@@ -1,15 +1,33 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-// import './Home.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import Typewriter from "typewriter-effect";
+import "./Home.css";
 
 const Home = () => {
+  const handleDoubleClick = () => {
+    document.getElementById("start-button").click();
+  };
+
   return (
-    <div className="homes-container">
-      <div className="homes-content">
-        <h1>Welcome to the Car Racing Game with Learning!</h1>
+    <div className="homec-container" onDoubleClick={handleDoubleClick}>
+      <div className="homec-content">
+        <h1>Car Racing</h1>
+        <h1>🏎️</h1>
+        <div className="typewriter1-container">
+          <Typewriter
+            onInit={(writer) => {
+              writer
+                .typeString("Fasten your seatbelt !")
+                .pauseFor(1000)
+                .typeString("<br />Double-click to start the race")
+                .start();
+            }}
+          />
+        </div>
         <Link to="/temp4/racing">
-          <button className="starts-button">Start Game</button>
+          <button id="start-button" className="startc-button">
+            Start Game
+          </button>
         </Link>
       </div>
     </div>

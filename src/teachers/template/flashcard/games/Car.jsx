@@ -1,16 +1,30 @@
 import React from 'react';
-import carImage from '../../../../assets/car2.png'; // Ensure this path is correct
-import './Car.css'; // Import styles
+import carImage from '../../../../assets/car2.png';
+import './Car.css';
 
 const Car = ({ position }) => {
-    // Translate position into lane class (0: left, 1: right)
-    const lanePosition = position === 0 ? 'left' : 'right';
+  let lanePosition;
 
-    return (
-        <div className={`car ${lanePosition}`}>
-            <img src={carImage} alt="Car" className="car-image" />
-        </div>
-    );
+  // Set position based on the lane value (0, 1, 2 for left, center, right)
+  switch (position) {
+    case 0:
+      lanePosition = 'left';
+      break;
+    case 1:
+      lanePosition = 'center';
+      break;
+    case 2:
+      lanePosition = 'right';
+      break;
+    default:
+      lanePosition = 'center';
+  }
+
+  return (
+    <div className={`car ${lanePosition}`}>
+      <img src={carImage} alt="Car" className="car-image" />
+    </div>
+  );
 };
 
 export default Car;

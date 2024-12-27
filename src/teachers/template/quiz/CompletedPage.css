@@ -1,56 +1,93 @@
 /* CompletedPage.css */
+* {
+  user-select: none;
+}
 
 .completed-page {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f7f9fc;
-  color: #333;
-  font-family: Arial, sans-serif;
+  align-items: center;
   text-align: center;
-  padding: 20px;
+  min-height: 100vh;
+  background: hsl(224, 100%, 84%);
+  color: #ffffff;
 }
 
 .completed-page__title {
   font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #4a90e2;
+  margin-bottom: 20px;
+  color: #ffffff !important;
 }
 
 .completed-page__score {
   font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .completed-page__message {
   font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.completed-page__buttons {
+  display: flex;
+  gap: 15px;
 }
 
 .completed-page__button {
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  font-weight: bold;
-  border-radius: 5px;
+  color: #ffffff;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .completed-page__button:hover {
-  background-color: #357ab7;
+  background-color: #2563eb;
+  transform: scale(1.05);
 }
 
-.completed-page__button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.5);
+.completed-page__button:active {
+  background-color: #1d4ed8;
+}
+
+.completed-page__button--secondary {
+  background-color: #facc15;
+  color: #ffffff;
+}
+
+.completed-page__button--secondary:hover {
+  background-color: #eab308;
+  transform: scale(1.05);
+}
+
+.completed-page__button--secondary:active {
+  background-color: #ca8a04;
+}
+
+.completed-page__button.active {
+  background-color: #ff4242;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .completed-page__title {
+    font-size: 2rem;
+  }
+
+  .completed-page__score,
+  .completed-page__message {
+    font-size: 1rem;
+  }
+
+  .completed-page__button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
 }

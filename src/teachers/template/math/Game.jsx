@@ -5,15 +5,17 @@ import {
   ClockCircleOutlined,
   TrophyOutlined,
   CloseCircleOutlined,
+  AimOutlined,
+  LeftOutlined,
+  RightOutlined,
 } from "@ant-design/icons";
 import "./Game.css";
 
 const { Title, Text } = Typography;
 
 const Game = () => {
-
   const [score, setScore] = useState(0);
-  const [gameTime, setGameTime] = useState(300);
+  const [gameTime, setGameTime] = useState(5000);
   const [isGameActive, setIsGameActive] = useState(true);
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -40,7 +42,6 @@ const Game = () => {
     try {
       const response = await fetch("/questions.json");
       const data = await response.json();
-      console.log(data);
       console.log(data.questions);
       setQuestions(data.questions);
     } catch (error) {
@@ -104,6 +105,7 @@ const Game = () => {
   }, [currentQuestionIndex, questions]);
 
   const handleRestart = () => {
+    navigate("/temp3");
     setScore(0);
     setGameTime(60);
     setIsGameActive(true);
@@ -130,13 +132,25 @@ const Game = () => {
   };
 
   const buttons = [
-    { label: "Move Left", action: moveLeft },
-    { label: "Shoot", action: handleShoot },
-    { label: "Move Right", action: moveRight },
+    {
+      label: "Move Left",
+      icon: <LeftOutlined />,
+      action: moveLeft,
+    },
+    {
+      label: "Shoot",
+      icon: <AimOutlined />,
+      action: handleShoot,
+    },
+    {
+      label: "Move Right",
+      icon: <RightOutlined />,
+      action: moveRight,
+    },
   ];
 
   const goToHomePage = () => {
-    navigate("/temp3");
+    navigate("/teacher/home");
   };
 
   const shoot = () => {
@@ -226,29 +240,23 @@ const Game = () => {
     }, 2000);
   };
 
-  // Function to cycle through the buttons every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setHighlightedIndex((prevIndex) => (prevIndex + 1) % buttons.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
-    // Cleanup the interval when the component is unmounted
     return () => clearInterval(interval);
   }, []);
 
-  // Handle left mouse click to trigger the action of the highlighted button
   useEffect(() => {
     const handleClick = (event) => {
       if (event.button === 0) {
-        // 0 indicates a left mouse click
         buttons[highlightedIndex].action();
       }
     };
 
-    // Add event listener for mouse clicks
     window.addEventListener("click", handleClick);
 
-    // Cleanup the event listener when the component is unmounted
     return () => window.removeEventListener("click", handleClick);
   }, [highlightedIndex]);
 
@@ -267,14 +275,14 @@ const Game = () => {
             style={{
               fontSize: "1.5rem",
               fontWeight: "bold",
-              color: "red",
+              color: "yellow",
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
             }}
           >
-            <ClockCircleOutlined style={{ marginRight: "8px",color:"red" }} />
-            {gameTime}s
+            <ClockCircleOutlined style={{ marginRight: "10px", color: "yellow" }} />
+            {gameTime} s
           </Text>
 
           <Card
@@ -289,6 +297,7 @@ const Game = () => {
               justifyContent: "center",
               minWidth: "200px",
               boxSizing: "border-box",
+              borderRadius: "50px",
             }}
           >
             <Title
@@ -345,6 +354,7 @@ const Game = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                borderRadius: "50px",
               }}
             >
               {option}
@@ -379,45 +389,7 @@ const Game = () => {
             }}
           />
         ))}
-        <Modal
-          title={
-            <span className="modal-title">
-              <CloseCircleOutlined
-                style={{ marginRight: "8px", color: "red" }}
-              />
-              Game Over
-            </span>
-          }
-          open={showGameOverModal}
-          onOk={goToHomePage}
-          onCancel={goToHomePage}
-          footer={[
-            <Button key="home" type="primary" onClick={goToHomePage}>
-              Home
-            </Button>,
-            <Button key="restart" type="default" onClick={handleRestart}>
-              Restart
-            </Button>,
-          ]}
-          width={600}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              textAlign: "center",
-            }}
-          >
-            <Text style={{ fontSize: "24px", fontWeight: "bold" }}>
-              {gameEndMessage}
-            </Text>
-            <CloseCircleOutlined
-              style={{ fontSize: "48px", color: "red", marginTop: "10px" }}
-            />
-          </div>
-        </Modal>
+
         <Modal
           title={
             <span className="modal-title">
@@ -464,12 +436,12 @@ const Game = () => {
                 highlightedIndex === index ? "highlighted" : ""
               }`}
               onClick={() => {
-                button.action(); // Perform the button's action
-                setHighlightedIndex(index); // Update the highlighted index
+                button.action();
+                setHighlightedIndex(index);
               }}
-              onMouseEnter={() => setHighlightedIndex(index)} // Update index on mouse enter
+              onMouseEnter={() => setHighlightedIndex(index)}
             >
-              {button.label}
+              {button.icon}
             </button>
           ))}
         </div>

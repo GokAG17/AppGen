@@ -18,11 +18,11 @@ const FinalTemplate = () => {
   const [optionBoxSize, setOptionBoxSize] = useState("");
   const [questionBoxSize, setquestionBoxSize] = useState("");
   const [fontColor, setFontColor] = useState("#000000");
-  const [fontSize, setFontSize] = useState("16px");
+  const [fontSize, setFontSize] = useState("20px");
 
   const fetchMCQs = async () => {
     try {
-      const response = await fetch("/mcqData.json");
+      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/mcqData.json");
       if (!response.ok) {
         throw new Error("Failed to load MCQs data");
       }
@@ -41,7 +41,7 @@ const FinalTemplate = () => {
 
   const fetchStylingValues = async () => {
     try {
-      const response = await fetch("/styling.json"); // Change the path to your styling config file or API
+      const response = await fetch("/styling1.json");
       if (!response.ok) {
         throw new Error("Failed to load styling values");
       }
@@ -103,29 +103,48 @@ const FinalTemplate = () => {
 
   const handleOptionClick = (option) => {
     window.speechSynthesis.cancel();
-
+  
     const speech = new SpeechSynthesisUtterance(option);
     speech.lang = "en-IN";
     speech.pitch = 1;
     speech.rate = 1;
-
+  
     window.speechSynthesis.speak(speech);
-
+  
     clearInterval(intervalId);
+  
+    let isCorrect = false;
     if (option === mcqData[currentQuestionIndex].correct_answer) {
       setScore((prevScore) => prevScore + 1);
       setFeedback("Correct!");
+      isCorrect = true;
     } else {
       setFeedback(
         `Incorrect! The correct answer is: ${mcqData[currentQuestionIndex].correct_answer}`
       );
     }
-
-    setTimeout(() => {
-      handleNextQuestion();
-    }, 5000);
+  
+    if (currentQuestionIndex === mcqData.length - 1) {
+      setTimeout(() => {
+        navigate("/temp1/completed", {
+          state: { score: isCorrect ? score + 1 : score, totalQuestions: mcqData.length },
+        });
+      }, 5000);
+    } else {
+      setTimeout(() => {
+        handleNextQuestion();
+      }, 5000);
+    }
   };
-
+  
+  const handleNextQuestion = () => {
+    setFeedback("");
+    if (currentQuestionIndex < mcqData.length - 1) {
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+      startJuggling();
+    }
+  };
+  
   const handleLeftClick = () => {
     const selectedOption =
       mcqData[currentQuestionIndex].options[highlightedOption];
@@ -138,19 +157,6 @@ const FinalTemplate = () => {
       document.removeEventListener("click", handleLeftClick);
     };
   }, [highlightedOption, mcqData, currentQuestionIndex]);
-
-  const handleNextQuestion = () => {
-    setFeedback("");
-    if (currentQuestionIndex < mcqData.length - 1) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-      startJuggling();
-    } else {
-      // Navigate to results page with score data after confirming last question is answered
-      navigate("/temp1/completed", {
-        state: { score, totalQuestions: mcqData.length },
-      });
-    }
-  };
 
   if (!mcqData || mcqData.length === 0) {
     return (

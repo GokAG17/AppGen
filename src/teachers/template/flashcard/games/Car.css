@@ -1,48 +1,65 @@
 .car {
   position: absolute;
   bottom: 0;
-  width: 200px; /* Default width for the car */
-  height: auto; /* Maintain aspect ratio for the height */
-  transition: left 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
-  z-index: 10; /* Ensure it appears above the road */
-  border-radius: 8px; /* Optional: round edges slightly */
-  transform: translateX(-50%); /* Center the car horizontally on its lane */
+  width: 200px;
+  height: auto;
+  transition: left 0.3s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 10;
+  border-radius: 8px;
+  transform: translateX(-50%);
 }
 
+/* Left lane */
 .car.left {
-  left: 27%; /* Adjusted position for left lane */
+  left: 20%;
 }
 
+/* Center lane */
+.car.center {
+  left: 55%;
+  transform: translateX(-50%);
+}
+
+/* Right lane */
 .car.right {
-  left: 82%; /* Adjusted position for right lane */
+  left: 87%;
 }
 
+/* Car image transition */
 .car-image {
-  width: 150px; /* Make the car image fill the container */
-  height: auto; /* Maintain aspect ratio for the image height */
-  transition: transform 0.2s ease-in-out; /* Smooth scaling on hover */
+  width: 150px;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
 }
 
-/* Hover effect to slightly zoom in */
 .car:hover .car-image {
   transform: scale(1.05);
 }
 
-/* Responsive design */
+/* Responsive sizes for different screen widths */
 @media (max-width: 1200px) {
   .car {
-      width: 140px; /* Smaller width for medium screens */
+    width: 140px;
+  }
+  .car-image {
+    width: 100px;
   }
 }
 
 @media (max-width: 800px) {
   .car {
-      width: 100px; /* Smaller width for small screens */
+    width: 100px;
+  }
+  .car-image {
+    width: 70px;
   }
 }
 
 @media (max-width: 400px) {
   .car {
-      width: 80px; /* Even smaller width for very small screens */
+    width: 80px;
+  }
+  .car-image {
+    width: 40px;
   }
 }

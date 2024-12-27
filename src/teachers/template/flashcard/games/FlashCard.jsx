@@ -17,7 +17,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
 
     const fetchStyles = async () => {
       try {
-        const response = await fetch("/styling.json"); 
+        const response = await fetch("/styling3.json"); 
         if (!response.ok) {
           throw new Error("Failed to fetch styles");
         }
@@ -35,7 +35,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
     const { question, answer } = flashcards[currentCardIndex];
     const message = `Question: ${question}. Answer: ${answer}.`;
 
-    speakText(message);
+    // speakText(message);
 
     return () => {
       if (window.speechSynthesis.speaking) {

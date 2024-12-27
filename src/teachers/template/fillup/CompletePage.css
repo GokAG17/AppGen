@@ -1,11 +1,11 @@
-/* Basic reset for padding and margin */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.end-page {
+.complete-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,55 +15,68 @@
   color: white;
   text-align: center;
   padding: 20px;
-  font-family: "Arial", sans-serif;
 }
 
-.end-page h1 {
+.complete-page h1 {
   font-size: 3rem;
   margin-bottom: 20px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.end-page p {
+.complete-page p {
   font-size: 1.5rem;
   margin-bottom: 30px;
   max-width: 500px; /* Limit the width of the paragraph */
+  line-height: 1.5;
 }
 
-.restart-button {
-  background-color: #fc5c7d;
-  color: white;
+/* Button styles */
+.complete-page button {
   border: none;
   border-radius: 25px;
-  padding: 10px 30px;
+  padding: 12px 30px;
   font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
 }
 
-.restart-button:hover {
-  background-color: #ff3d68; /* Darker shade for hover effect */
+.complete-page .restart-button,
+.complete-page .home-button {
+  background-color: #fc5c7d;
+  color: white;
+}
+
+.complete-page .restart-button:hover,
+.complete-page .home-button:hover {
+  background-color: #ff3d68; 
   transform: translateY(-2px);
 }
 
-.restart-button:active {
+.complete-page .restart-button.active,
+.complete-page .home-button.active {
   transform: translateY(1px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #5557cf;
 }
 
-/* Media queries for responsive design */
 @media (max-width: 600px) {
-  .end-page h1 {
+  .complete-page h1 {
     font-size: 2.5rem;
   }
 
-  .end-page p {
+  .complete-page p {
     font-size: 1.2rem;
   }
 
-  .restart-button {
+  .complete-page .restart-button,
+  .complete-page .home-button {
     font-size: 1rem;
-    padding: 8px 20px;
+    padding: 10px 25px;
+  }
+
+  .complete-page {
+    padding: 15px;
   }
 }

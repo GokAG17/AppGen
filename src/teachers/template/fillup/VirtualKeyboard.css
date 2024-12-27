@@ -5,6 +5,7 @@
     transform: translateX(-50%);
     background-color: #fff;
     border: 1px solid #ccc;
+    border-radius: 15px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -35,10 +36,11 @@
   }
   
   .key.active {
-    background-color: #007bff; /* Blue background for active key */
+    background-color: #007bff;
     color: white;
-    transform: scale(1.1); /* Slight scaling effect to show focus */
+    transform: scale(1.1);
     transition: transform 0.2s ease;
+    font-weight: bold;
   }
   
   .close-btn {
@@ -53,6 +55,6 @@
   }
   
   .key:active {
-    transform: scale(0.95); /* Slight shrinking when clicked */
+    transform: scale(0.95);
   }
   
