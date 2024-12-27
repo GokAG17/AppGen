@@ -89,33 +89,37 @@ const Prompt = () => {
   };
 
   const renderTemplate = () => {
-    let path = "";
+    const paths = {
+      "1": { "1": "/temp1", "2": "/temp2" },
+      "2": { "1": "/temp3" },
+      "3": { "1": "/temp4" },
+    };
 
-    if (id === "1" && selectedTemplate === "1") {
-      path = "/temp1";
-    } else if (id === "1" && selectedTemplate === "2") {
-      path = "/temp2";
-    } else if (id === "2" && selectedTemplate === "1") {
-      path = "/temp3";
-    } else if (id === "3" && selectedTemplate === "1") {
-      path = "/temp4";
+    const selectedPath = paths[id]?.[selectedTemplate];
+    if (!selectedPath) {
+      console.warn("No path found for the given ID and template.");
+      return null;
     }
 
-    if (path) {
-      const iframeSrc = `http://localhost:5173${path}`;
-      console.log(iframeSrc);
-      return (
-        <iframe
-          src={iframeSrc}
-          title={`Project ${id}`}
-          style={{
-            width: "900px",
-            height: "500px",
-            border: "none",
-          }}
-        />
-      );
-    }
+    const protocol = window.location.protocol;
+    const hostname = window.location.hostname;
+    const port = window.location.port;
+
+    const baseUrl = `${protocol}//${hostname}:${port}`;
+
+    const iframeSrc = `${baseUrl}${selectedPath}`;
+
+    return (
+      <iframe
+        src={iframeSrc}
+        title={`Project ${id}`}
+        style={{
+          width: "900px",
+          height: "500px",
+          border: "none",
+        }}
+      />
+    );
   };
 
   const handleGenerateQuestions = () => {
