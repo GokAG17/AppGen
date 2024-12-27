@@ -28,7 +28,7 @@ const FinalFillUpTemplate = () => {
 
   const fetchFillUps = async () => {
     try {
-      const response = await fetch("/fillInTheBlanks.json");
+      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/fillInTheBlanks.json");
       const data = await response.json();
 
       if (response.ok) {
