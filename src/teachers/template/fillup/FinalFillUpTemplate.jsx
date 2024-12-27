@@ -45,7 +45,7 @@ const FinalFillUpTemplate = () => {
 
   const fetchStylingValues = async () => {
     try {
-      const response = await fetch("/styling2.json");
+      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/styling2.json");
       if (!response.ok) {
         throw new Error("Failed to load styling values");
       }

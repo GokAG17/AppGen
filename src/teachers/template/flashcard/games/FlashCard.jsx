@@ -10,14 +10,15 @@ const FlashCard = ({ flashcards, onAnswer }) => {
     optionBoxSize: "14px",
     fontColor: "#000",
     fontSize: "16px",
-  }); 
+  });
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
-
     const fetchStyles = async () => {
       try {
-        const response = await fetch("/styling3.json"); 
+        const response = await fetch(
+          "https://mcqdata.s3.eu-north-1.amazonaws.com/styling3.json"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch styles");
         }
@@ -51,7 +52,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
 
     utterance.onend = () => {
       setIsSpeaking(false);
-      onAnswer(); 
+      onAnswer();
     };
 
     synth.speak(utterance);
@@ -64,7 +65,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
 
     const nextIndex = (currentCardIndex + 1) % flashcards.length;
     setCurrentCardIndex(nextIndex);
-    onAnswer(); 
+    onAnswer();
   };
 
   return (
@@ -96,10 +97,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
         >
           {flashcards[currentCardIndex].answer}
         </p>
-        <button
-          onClick={handleNextCard}
-          disabled={isSpeaking} 
-        >
+        <button onClick={handleNextCard} disabled={isSpeaking}>
           next
         </button>
       </div>
