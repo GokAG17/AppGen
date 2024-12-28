@@ -118,7 +118,7 @@
 }
 
 /* Fullscreen Loader applied only to page content */
-.fullscreen-loader {
+.fullscreen-loaders {
   position: absolute; /* Ensure it's within the container */
   top: 0;
   left: 0;
