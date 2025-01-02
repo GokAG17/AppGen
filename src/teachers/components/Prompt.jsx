@@ -450,7 +450,7 @@ const Prompt = () => {
       )}
       {/* {<Spin tip="Generating...." spinning={genloading} fullscreen />} */}
       {genloading && (
-        <div className="fullscreen-loader">
+        <div className="fullscreen-loaders">
           <Mosaic color={["#33CCCC", "#33CC36", "#B8CC33", "#FCCA00"]} />
         </div>
       )}

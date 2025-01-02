@@ -148,6 +148,19 @@
   transform: rotate(180deg);
 }
 
+.fullscreen-loaders {
+  position: absolute; /* Ensure it's within the container */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width of the container */
+  height: 100%; /* Full height of the container */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-color: rgba(25, 24, 24, 0.675); /* Optional: semi-transparent background */
+  z-index: 9999; /* Ensure it’s on top of page content */
+}
+
 
 @keyframes fadeIn {
   0% {

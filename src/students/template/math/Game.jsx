@@ -9,6 +9,7 @@ import {
   LeftOutlined,
   RightOutlined,
 } from "@ant-design/icons";
+import { Mosaic } from "react-loading-indicators";
 import "./Game.css";
 
 const { Title, Text } = Typography;
@@ -261,6 +262,14 @@ const Game = () => {
 
     return () => window.removeEventListener("click", handleClick);
   }, [highlightedIndex]);
+
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="fullscreen-loaders">
+        <Mosaic color={["#33CCCC", "#33CC36", "#B8CC33", "#FCCA00"]} />
+      </div>
+    );
+  }
 
   return (
     <div className="game-container">

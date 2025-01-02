@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Mosaic } from "react-loading-indicators";
 import "./QuizTemplate.css";
 
 const FinalTemplate = () => {
@@ -22,7 +23,9 @@ const FinalTemplate = () => {
 
   const fetchMCQs = async () => {
     try {
-      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/mcqData.json");
+      const response = await fetch(
+        "https://mcqdata.s3.eu-north-1.amazonaws.com/mcqData.json"
+      );
       if (!response.ok) {
         throw new Error("Failed to load MCQs data");
       }
@@ -41,7 +44,9 @@ const FinalTemplate = () => {
 
   const fetchStylingValues = async () => {
     try {
-      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/styling1.json");
+      const response = await fetch(
+        "https://mcqdata.s3.eu-north-1.amazonaws.com/styling1.json"
+      );
       if (!response.ok) {
         throw new Error("Failed to load styling values");
       }
@@ -103,16 +108,16 @@ const FinalTemplate = () => {
 
   const handleOptionClick = (option) => {
     window.speechSynthesis.cancel();
-  
+
     const speech = new SpeechSynthesisUtterance(option);
     speech.lang = "en-IN";
     speech.pitch = 1;
     speech.rate = 1;
-  
+
     window.speechSynthesis.speak(speech);
-  
+
     clearInterval(intervalId);
-  
+
     let isCorrect = false;
     if (option === mcqData[currentQuestionIndex].correct_answer) {
       setScore((prevScore) => prevScore + 1);
@@ -123,11 +128,14 @@ const FinalTemplate = () => {
         `Incorrect! The correct answer is: ${mcqData[currentQuestionIndex].correct_answer}`
       );
     }
-  
+
     if (currentQuestionIndex === mcqData.length - 1) {
       setTimeout(() => {
         navigate("/student/temp1/completed", {
-          state: { score: isCorrect ? score + 1 : score, totalQuestions: mcqData.length },
+          state: {
+            score: isCorrect ? score + 1 : score,
+            totalQuestions: mcqData.length,
+          },
         });
       }, 5000);
     } else {
@@ -136,7 +144,7 @@ const FinalTemplate = () => {
       }, 5000);
     }
   };
-  
+
   const handleNextQuestion = () => {
     setFeedback("");
     if (currentQuestionIndex < mcqData.length - 1) {
@@ -144,7 +152,7 @@ const FinalTemplate = () => {
       startJuggling();
     }
   };
-  
+
   const handleLeftClick = () => {
     const selectedOption =
       mcqData[currentQuestionIndex].options[highlightedOption];
@@ -160,8 +168,8 @@ const FinalTemplate = () => {
 
   if (!mcqData || mcqData.length === 0) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <p>Loading MCQs...</p>
+      <div className="fullscreen-loaders">
+        <Mosaic color={["#33CCCC", "#33CC36", "#B8CC33", "#FCCA00"]} />
       </div>
     );
   }

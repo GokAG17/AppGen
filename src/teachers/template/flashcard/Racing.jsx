@@ -16,7 +16,7 @@ const RacingGameWithLearning = () => {
   const [flashcardVisible, setFlashcardVisible] = useState(false);
   const [currentFlashcard, setCurrentFlashcard] = useState(null);
   const [isGamePaused, setIsGamePaused] = useState(false);
-  const [flashcards, setFlashcards] = useState([]);
+  const [flashcards, setFlashcards] = useState(null);
   const [flashcardTimer, setFlashcardTimer] = useState(null);
   const [direction, setDirection] = useState(1);
   const [score, setScore] = useState(0);
@@ -51,7 +51,9 @@ const RacingGameWithLearning = () => {
 
     const fetchFlashcards = async () => {
       try {
-        const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/flashcards.json");
+        const response = await fetch(
+          "https://mcqdata.s3.eu-north-1.amazonaws.com/flashcards.json"
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -181,6 +183,14 @@ const RacingGameWithLearning = () => {
       };
     }
   }, [showCongratsModal, handleButtonClick]);
+
+  if (!flashcards || flashcards.length === 0) {
+    return (
+      <div className="fullscreen-loader">
+        <Mosaic color={["#33CCCC", "#33CC36", "#B8CC33", "#FCCA00"]} />
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (

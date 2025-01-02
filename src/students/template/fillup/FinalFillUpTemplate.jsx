@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import VirtualKeyboard from "./VirtualKeyboard";
 import { Button } from "antd";
 import { FaKeyboard } from "react-icons/fa";
+import { Mosaic } from "react-loading-indicators";
 import "./FinalTemplate.css";
 
 const FinalFillUpTemplate = () => {
@@ -38,9 +39,7 @@ const FinalFillUpTemplate = () => {
       }
     } catch (error) {
       console.error("Error fetching fill-in-the-blanks questions:", error);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   const fetchStylingValues = async () => {
@@ -122,8 +121,12 @@ const FinalFillUpTemplate = () => {
     }
   };
 
-  if (loading) {
-    return <div className="final-fillup-loading">Loading...</div>;
+  if (!fillUpData || fillUpData.length === 0) {
+    return (
+      <div className="fullscreen-loaders">
+        <Mosaic color={["#33CCCC", "#33CC36", "#B8CC33", "#FCCA00"]} />
+      </div>
+    );
   }
 
   const currentFillUp = fillUpData?.[currentQuestionIndex] || null;

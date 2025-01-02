@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Mosaic } from "react-loading-indicators";
 import "./QuizTemplate.css";
 
 const FinalTemplate = () => {
@@ -160,8 +161,8 @@ const FinalTemplate = () => {
 
   if (!mcqData || mcqData.length === 0) {
     return (
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <p>Loading MCQs...</p>
+      <div className="fullscreen-loader">
+        <Mosaic color={["#33CCCC", "#33CC36", "#B8CC33", "#FCCA00"]} />
       </div>
     );
   }
