@@ -36,35 +36,36 @@ const Navbar = () => {
       icon: <HomeOutlined />,
       label: <Link to="/teacher/home">Home</Link>,
     },
+    // {
+    //   key: "2",
+    //   icon: <TeamOutlined />,
+    //   label: <Link to="/teacher/students">Students</Link>,
+    // },
+    // {
+    //   key: "3",
+    //   icon: <AppstoreAddOutlined />,
+    //   label: <Link to="/teacher/templates">Templates</Link>,
+    // },
+    // {
+    //   key: "4",
+    //   icon: <QuestionCircleOutlined />,
+    //   label: <Link to="/teacher/questions">Questions</Link>,
+    // },
+    // {
+    //   key: "5",
+    //   icon: <UserOutlined />,
+    //   label: <Link to="/teacher/profile">Profile</Link>,
+    // },
+    // {
+    //   key: "6",
+    //   icon: <SettingOutlined />,
+    //   label: <Link to="/teacher/settings">Settings</Link>,
+    // },
     {
-      key: "2",
-      icon: <TeamOutlined />,
-      label: <Link to="/teacher/students">Students</Link>,
-    },
-    {
-      key: "3",
-      icon: <AppstoreAddOutlined />,
-      label: <Link to="/teacher/templates">Templates</Link>,
-    },
-    {
-      key: "4",
-      icon: <QuestionCircleOutlined />,
-      label: <Link to="/teacher/questions">Questions</Link>,
-    },
-    {
-      key: "5",
-      icon: <UserOutlined />,
-      label: <Link to="/teacher/profile">Profile</Link>,
-    },
-    {
-      key: "6",
-      icon: <SettingOutlined />,
-      label: <Link to="/teacher/settings">Settings</Link>,
-    },{
       key: "7",
       icon: <LogoutOutlined />,
       label: <a onClick={handleLogout}>Logout</a>,
-    }
+    },
   ];
 
   return (
