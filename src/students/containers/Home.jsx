@@ -67,7 +67,7 @@ const Home = () => {
       {/* Main Section */}
       <div
         className="main-section"
-        onDoubleClick={handleDoubleClick}
+        onClick={handleDoubleClick}
         style={{ cursor: "pointer" }}
       >
         {/* Quote Section */}

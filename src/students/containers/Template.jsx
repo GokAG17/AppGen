@@ -61,11 +61,11 @@ const Template = () => {
       }
     };
 
-    document.addEventListener("dblclick", handlePageDoubleClick);
+    document.addEventListener("click", handlePageDoubleClick);
 
     return () => {
       clearInterval(autoTraversal);
-      document.removeEventListener("dblclick", handlePageDoubleClick);
+      document.removeEventListener("click", handlePageDoubleClick);
     };
   }, [isTraversalStarted, activeCardIndex, navigate]);
 
@@ -105,7 +105,7 @@ const Template = () => {
             writer
               .typeString("To Access and Select !")
               .pauseFor(1000)
-              .typeString("<br />Double click to start ")
+              .typeString("<br />Click to start ")
               .start();
           }}
         />

@@ -16,7 +16,7 @@ function StartPage() {
   };
 
   return (
-    <div className="start1-page" onDoubleClick={handleDoubleClick}>
+    <div className="start1-page" onClick={handleDoubleClick}>
       <div className="background-overlay"></div>
       <div className="main1-content">
         <h1 className="start1-page__title">Quiz App</h1>
@@ -32,7 +32,7 @@ function StartPage() {
               writer
                 .typeString("Ready to challenge yourself ?")
                 .pauseFor(1000)
-                .typeString("<br />Double click to start")
+                .typeString("<br />Click to start")
                 .start();
             }}
           />

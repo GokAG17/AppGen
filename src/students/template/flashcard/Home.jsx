@@ -9,7 +9,7 @@ const Home = () => {
   };
 
   return (
-    <div className="homec-container" onDoubleClick={handleDoubleClick}>
+    <div className="homec-container" onClick={handleDoubleClick}>
       <div className="homec-content">
         <h1>Car Racing</h1>
         <h1>🏎️</h1>
@@ -19,7 +19,7 @@ const Home = () => {
               writer
                 .typeString("Fasten your seatbelt !")
                 .pauseFor(1000)
-                .typeString("<br />Double-click to start the race")
+                .typeString("<br />Click to start the race")
                 .start();
             }}
           />

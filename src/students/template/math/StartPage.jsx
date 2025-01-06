@@ -16,7 +16,7 @@ const StartPage = () => {
   };
 
   return (
-    <div className="startPageContainer" onDoubleClick={handleDoubleClick}>
+    <div className="startPageContainer" onClick={handleDoubleClick}>
       <h2>Math Game !</h2>
 
       <Button
@@ -36,7 +36,7 @@ const StartPage = () => {
               .pauseFor(500)
               .typeString("<br />")
               .pauseFor(500)
-              .typeString("<br />Double-click to start the battle")
+              .typeString("<br />Click to start the battle")
               .start();
           }}
         />

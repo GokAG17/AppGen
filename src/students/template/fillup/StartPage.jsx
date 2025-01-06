@@ -37,7 +37,7 @@ const StartPage = () => {
             writer
               .typeString("To Start your journey")
               .pauseFor(1000)
-              .typeString("<br />Double click")
+              .typeString("<br />Click")
               .start();
           }}
         />

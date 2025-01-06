@@ -15,7 +15,7 @@ const FinalFillUpTemplate = () => {
   const [feedback, setFeedback] = useState("");
   const [userAnswer, setUserAnswer] = useState("");
   const [loading, setLoading] = useState(true);
-  const [showKeyboard, setShowKeyboard] = useState(false);
+  const [showKeyboard, setShowKeyboard] = useState(true);
 
   const [questionBoxColor, setQuestionBoxColor] = useState("#ffffff");
   const [inputBoxColor, setInputBoxColor] = useState("#f0f0f0");
@@ -71,19 +71,19 @@ const FinalFillUpTemplate = () => {
     }
   }, [currentQuestionIndex]);
 
-  useEffect(() => {
-    const handleDoubleClick = () => {
-      setShowKeyboard((prevShowKeyboard) => !prevShowKeyboard);
-    };
+  // useEffect(() => {
+  //   const handleDoubleClick = () => {
+  //     setShowKeyboard((prevShowKeyboard) => !prevShowKeyboard);
+  //   };
 
-    // Listen for double-click on the document
-    document.addEventListener("dblclick", handleDoubleClick);
+  //   // Listen for double-click on the document
+  //   document.addEventListener("dblclick", handleDoubleClick);
 
-    // Cleanup event listener on component unmount
-    return () => {
-      document.removeEventListener("dblclick", handleDoubleClick);
-    };
-  }, []);
+  //   // Cleanup event listener on component unmount
+  //   return () => {
+  //     document.removeEventListener("dblclick", handleDoubleClick);
+  //   };
+  // }, []);
 
   const handleAnswerSubmit = () => {
     const currentFillUp = fillUpData[currentQuestionIndex];

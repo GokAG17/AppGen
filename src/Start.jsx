@@ -11,7 +11,7 @@ const StartPage = () => {
   const navigate = useNavigate();
 
   const handleStart = () => {
-    navigate("/home");
+    navigate("/login");
   };
 
   return (
