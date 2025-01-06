@@ -2,7 +2,7 @@
   position: absolute;
   width: 100px;
   height: 100px;
-  background-image: url("../../../../assets/c.gif");
+  background-image: url("/images/c.gif");
   background-size: cover;
   background-repeat: no-repeat;
   background-color: transparent;

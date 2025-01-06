@@ -373,7 +373,7 @@ const Game = () => {
 
         {selectedShip && (
           <img
-            src={`/${selectedShip}.png`}
+            src={`/images/${selectedShip}.png`}
             alt="Selected Ship"
             style={{
               position: "absolute",

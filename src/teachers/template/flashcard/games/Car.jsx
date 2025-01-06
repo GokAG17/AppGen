@@ -1,5 +1,5 @@
 import React from 'react';
-import carImage from '../../../../assets/car2.png';
+import carImage from '/images/car2.png';
 import './Car.css';
 
 const Car = ({ position }) => {
