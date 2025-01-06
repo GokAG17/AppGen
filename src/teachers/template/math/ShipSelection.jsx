@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./ShipSelection.css";
 
 const ships = [
-  { display: "Stellar Voyager", name: "ship 1", image: "/images/ship-1.png" },
-  { display: "Nebula Runner", name: "ship 2", image: "/images/ship-2.png" },
-  { display: "Galactic Falcon", name: "ship 3", image: "/images/ship-3.png" },
+  { display: "Stellar Voyager", name: "ship-1", image: "/images/ship-1.png" },
+  { display: "Nebula Runner", name: "ship-2", image: "/images/ship-2.png" },
+  { display: "Galactic Falcon", name: "ship-3", image: "/images/ship-3.png" },
 ];
 
 const ShipSelection = () => {
