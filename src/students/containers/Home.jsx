@@ -90,7 +90,7 @@ const Home = () => {
               writer
                 .typeString("Hello Students! Welcome to Learning")
                 .pauseFor(1000)
-                .typeString("<br />Double click to start ")
+                .typeString("<br />Click to start ")
                 .start();
             }}
           />
