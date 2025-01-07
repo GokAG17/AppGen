@@ -28,13 +28,18 @@ const FinalFillUpTemplate = () => {
 
   const fetchFillUps = async () => {
     try {
-      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/fillInTheBlanks.json");
+      const response = await fetch(
+        "https://mcqdata.s3.eu-north-1.amazonaws.com/fillInTheBlanks.json"
+      );
       const data = await response.json();
 
       if (response.ok) {
         setFillUpData(data.questions);
       } else {
-        console.error("Failed to fetch fill-in-the-blanks questions:", data.error);
+        console.error(
+          "Failed to fetch fill-in-the-blanks questions:",
+          data.error
+        );
       }
     } catch (error) {
       console.error("Error fetching fill-in-the-blanks questions:", error);
@@ -43,7 +48,9 @@ const FinalFillUpTemplate = () => {
 
   const fetchStylingValues = async () => {
     try {
-      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/styling2.json");
+      const response = await fetch(
+        `https://mcqdata.s3.eu-north-1.amazonaws.com/styling2.json?v=${Date.now()}`
+      );
       if (!response.ok) {
         throw new Error("Failed to load styling values");
       }
@@ -130,7 +137,6 @@ const FinalFillUpTemplate = () => {
 
   return (
     <div className="final-fillup-container">
-
       <Button
         className="keyboard-toggle-btn"
         icon={<FaKeyboard />}

@@ -45,7 +45,7 @@ const FinalTemplate = () => {
   const fetchStylingValues = async () => {
     try {
       const response = await fetch(
-        "https://mcqdata.s3.eu-north-1.amazonaws.com/styling1.json"
+        `https://mcqdata.s3.eu-north-1.amazonaws.com/styling1.json?v=${Date.now()}`
       );
       if (!response.ok) {
         throw new Error("Failed to load styling values");
