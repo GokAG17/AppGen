@@ -41,7 +41,14 @@ const Game = () => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch("https://mcqdata.s3.eu-north-1.amazonaws.com/questions.json");
+      const response = await fetch(
+        "https://mcqdata.s3.eu-north-1.amazonaws.com/questions.json",
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+          },
+        }
+      );
       const data = await response.json();
       console.log(data.questions);
       setQuestions(data.questions);

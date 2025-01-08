@@ -52,7 +52,12 @@ const RacingGameWithLearning = () => {
     const fetchFlashcards = async () => {
       try {
         const response = await fetch(
-          "https://mcqdata.s3.eu-north-1.amazonaws.com/flashcards.json"
+          "https://mcqdata.s3.eu-north-1.amazonaws.com/flashcards.json",
+          {
+            headers: {
+              "Cache-Control": "no-cache",
+            },
+          }
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

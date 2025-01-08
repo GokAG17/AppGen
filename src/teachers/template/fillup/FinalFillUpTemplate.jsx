@@ -29,7 +29,12 @@ const FinalFillUpTemplate = () => {
   const fetchFillUps = async () => {
     try {
       const response = await fetch(
-        "https://mcqdata.s3.eu-north-1.amazonaws.com/fillInTheBlanks.json"
+        "https://mcqdata.s3.eu-north-1.amazonaws.com/fillInTheBlanks.json",
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+          },
+        }
       );
       const data = await response.json();
 
@@ -49,7 +54,12 @@ const FinalFillUpTemplate = () => {
   const fetchStylingValues = async () => {
     try {
       const response = await fetch(
-        `https://mcqdata.s3.eu-north-1.amazonaws.com/styling2.json?v=${Date.now()}`
+        `https://mcqdata.s3.eu-north-1.amazonaws.com/styling2.json`,
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+          },
+        }
       );
       if (!response.ok) {
         throw new Error("Failed to load styling values");

@@ -17,7 +17,12 @@ const FlashCard = ({ flashcards, onAnswer }) => {
     const fetchStyles = async () => {
       try {
         const response = await fetch(
-          `https://mcqdata.s3.eu-north-1.amazonaws.com/styling3.json?v=${Date.now()}`
+          `https://mcqdata.s3.eu-north-1.amazonaws.com/styling3.json`,
+          {
+            headers: {
+              "Cache-Control": "no-cache",
+            },
+          }
         );
         if (!response.ok) {
           throw new Error("Failed to fetch styles");
