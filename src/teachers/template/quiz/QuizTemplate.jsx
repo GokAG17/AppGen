@@ -102,10 +102,10 @@ const FinalTemplate = () => {
           (prevIndex + 1) % mcqData[currentQuestionIndex].options.length;
 
         // Speak the highlighted option
-        // const speech = new SpeechSynthesisUtterance(
-        //   mcqData[currentQuestionIndex].options[newIndex]
-        // );
-        // window.speechSynthesis.speak(speech);
+        const speech = new SpeechSynthesisUtterance(
+          mcqData[currentQuestionIndex].options[newIndex]
+        );
+        window.speechSynthesis.speak(speech);
         return newIndex;
       });
     }, 3000);
