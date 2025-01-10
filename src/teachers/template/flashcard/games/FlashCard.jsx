@@ -5,9 +5,9 @@ const FlashCard = ({ flashcards, onAnswer }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [styles, setStyles] = useState({
     questionBoxColor: "#fff",
-    questionBoxSize: "18px",
+    questionBoxSize: "20px",
     optionBoxColor: "#eee",
-    optionBoxSize: "14px",
+    optionBoxSize: "20px",
     fontColor: "#000",
     fontSize: "16px",
   });
@@ -82,7 +82,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
         backgroundColor: styles.optionBoxColor,
       }}
     >
-      <h2>Flashcard Learning</h2>
+      {/* <h2>Flashcard Learning</h2> */}
       <div>
         <h3
           style={{
@@ -93,7 +93,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
         >
           {flashcards[currentCardIndex].question}
         </h3>
-        <p
+        <h3
           style={{
             backgroundColor: styles.optionBoxColor,
             fontSize: styles.optionBoxSize,
@@ -101,10 +101,10 @@ const FlashCard = ({ flashcards, onAnswer }) => {
           }}
         >
           {flashcards[currentCardIndex].answer}
-        </p>
-        <button onClick={handleNextCard} disabled={isSpeaking}>
+        </h3>
+        {/* <button onClick={handleNextCard} disabled={isSpeaking}>
           next
-        </button>
+        </button> */}
       </div>
     </div>
   );
