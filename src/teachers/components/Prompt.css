@@ -76,6 +76,22 @@
   background-color: #0b0b0b;
 }
 
+.question-button {
+  border-radius: 50px;
+  background-color: #303030;
+  color: #ffffff;
+  border: none;
+  padding: 24px 36px;
+  max-width: 200px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.question-button:hover {
+  background-color: #0b0b0b;
+}
+
 .template1-card {
   border-radius: 12px;
   padding: 20px;

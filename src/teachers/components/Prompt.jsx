@@ -15,6 +15,7 @@ import Questionnaire4 from "./template/Math/Setup.jsx";
 import TemplateEditor1 from "./template/Quiz/Editor.jsx";
 import TemplateEditor2 from "./template/Quiz/Editor1.jsx";
 import TemplateEditor3 from "./template/Flashcard/Editor1.jsx";
+import Questions from "./Questions.jsx";
 import "./Prompt.css";
 
 const Prompt = () => {
@@ -24,10 +25,13 @@ const Prompt = () => {
   const [loading, setLoading] = useState(false);
   const [genloading, setgenLoading] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [showQuestions, setShowQuestions] = useState(false);
   const [startClicked, setStartClicked] = useState(false);
+  const [questionClicked, setQuestionClicked] = useState(false);
   const [templateData, setTemplateData] = useState(null);
   const [templateData1, setTemplateData1] = useState(null);
   const [templateData2, setTemplateData2] = useState(null);
+  const [generatedQuestions, setGeneratedQuestions] = useState([]);
   const [isTemplateEditorVisible, setIsTemplateEditorVisible] = useState(false);
   const [
     isTemplateEditorVisibleFill,
@@ -134,6 +138,140 @@ const Prompt = () => {
       console.log("Questions generated and questionnaire shown.");
     }, 2000);
   };
+
+  const handleQuestions = () => {
+    console.log(
+      `Generating questions for Template ${selectedTemplate} in App ${id}`
+    );
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      setShowQuestions(true);
+      console.log("Questions generated and questionnaire shown.");
+    }, 2000);
+  };
+
+  const handleMCQQuestions = async (questions) => {
+    console.log("Generated Questions:", questions);
+  
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/mcq-handler`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questions }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to send questions to the backend");
+      }
+  
+      const result = await response.json();
+      console.log("Response from backend:", result);
+
+      alert("Questions submitted successfully!");
+    } catch (error) {
+      console.error("Error posting questions to backend:", error);
+      alert("Failed to submit questions. Please try again.");
+    }
+  
+    setGeneratedQuestions(questions);
+    setShowQuestions(false);
+    setQuestionClicked(false);
+  };
+
+  const handleFillQuestions = async (questions) => {
+    console.log("Generated Questions:", questions);
+  
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/fill-handler`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questions }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to send questions to the backend");
+      }
+  
+      const result = await response.json();
+      console.log("Response from backend:", result);
+
+      alert("Questions submitted successfully!");
+    } catch (error) {
+      console.error("Error posting questions to backend:", error);
+      alert("Failed to submit questions. Please try again.");
+    }
+  
+    setGeneratedQuestions(questions);
+    setShowQuestions(false);
+    setQuestionClicked(false);
+  };
+
+  const handleMathQuestions = async (questions) => {
+    console.log("Generated Questions:", questions);
+  
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/math-handler`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questions }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to send questions to the backend");
+      }
+  
+      const result = await response.json();
+      console.log("Response from backend:", result);
+
+      alert("Questions submitted successfully!");
+    } catch (error) {
+      console.error("Error posting questions to backend:", error);
+      alert("Failed to submit questions. Please try again.");
+    }
+  
+    setGeneratedQuestions(questions);
+    setShowQuestions(false);
+    setQuestionClicked(false);
+  };
+
+  const handleFlashQuestions = async (questions) => {
+    console.log("Generated Questions:", questions);
+  
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/flash-handler`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ questions }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to send questions to the backend");
+      }
+  
+      const result = await response.json();
+      console.log("Response from backend:", result);
+
+      alert("Questions submitted successfully!");
+    } catch (error) {
+      console.error("Error posting questions to backend:", error);
+      alert("Failed to submit questions. Please try again.");
+    }
+  
+    setGeneratedQuestions(questions);
+    setShowQuestions(false);
+    setQuestionClicked(false);
+  };
+  
 
   const handleSubmitData = (data, type, setDataFn) => {
     console.log(`All responses for ${type}:`, data);
@@ -395,22 +533,47 @@ const Prompt = () => {
           </Modal>
         )
       )}
-      {!showPreview && !loading && !startClicked && (
-        <Button
-          className="start1-button"
-          onClick={() => {
-            handleGenerateQuestions();
-            setStartClicked(true);
-          }}
-          style={{ marginTop: "20px" }}
-          disabled={loading}
-        >
-          {loading ? <Spin size="small" /> : "Start"}
-        </Button>
-      )}
       {!showPreview &&
         !loading &&
         !startClicked &&
+        !showQuestionnaire &&
+        !showQuestions && (
+          <Button
+            className="start1-button"
+            onClick={() => {
+              handleGenerateQuestions();
+              setStartClicked(true);
+            }}
+            style={{ marginTop: "20px" }}
+            disabled={loading}
+          >
+            {loading ? <Spin size="small" /> : "Start"}
+          </Button>
+        )}
+
+      {!showPreview &&
+        !loading &&
+        !questionClicked &&
+        !showQuestionnaire &&
+        !showQuestions && (
+          <Button
+            className="question-button"
+            onClick={() => {
+              handleQuestions();
+              setQuestionClicked(true);
+            }}
+            style={{ marginTop: "20px" }}
+            disabled={loading}
+          >
+            {loading ? <Spin size="small" /> : "Add Questions"}
+          </Button>
+        )}
+
+      {!showPreview &&
+        !loading &&
+        !startClicked &&
+        !showQuestionnaire &&
+        !showQuestions &&
         buttonConfigs.map(
           (
             { data, id: configId, selectedTemplate: configTemplate, onClick },
@@ -429,6 +592,7 @@ const Prompt = () => {
               </Button>
             )
         )}
+
       {!showPreview && !loading && startClicked && showQuestionnaire && (
         <div className="questionnaire-container">
           {id === "1" && selectedTemplate === "1" ? (
@@ -442,6 +606,21 @@ const Prompt = () => {
           ) : null}
         </div>
       )}
+
+      {!showPreview && !loading && questionClicked && showQuestions && (
+        <div className="questionnaire-container">
+          {id === "1" && selectedTemplate === "1" ? (
+            <Questions handleSubmitAll={handleMCQQuestions} />
+          ) : id === "1" && selectedTemplate === "2" ? (
+            <Questions handleSubmitAll={handleFillQuestions} />
+          ) : id === "2" && selectedTemplate === "1" ? (
+            <Questions onDataReceived={handleMathQuestions} />
+          ) : id === "3" && selectedTemplate === "1" ? (
+            <Questions handleSubmitAll={handleFlashQuestions} />
+          ) : null}
+        </div>
+      )}
+
       {showPreview && renderTemplate()}
       {loading && (
         <div className="loading-container">
