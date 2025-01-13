@@ -614,7 +614,7 @@ const Prompt = () => {
           ) : id === "1" && selectedTemplate === "2" ? (
             <Questions handleSubmitAll={handleFillQuestions} />
           ) : id === "2" && selectedTemplate === "1" ? (
-            <Questions onDataReceived={handleMathQuestions} />
+            <Questions handleSubmitAll={handleMathQuestions} />
           ) : id === "3" && selectedTemplate === "1" ? (
             <Questions handleSubmitAll={handleFlashQuestions} />
           ) : null}

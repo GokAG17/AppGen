@@ -10,7 +10,7 @@ const Questions = ({ handleSubmitAll }) => {
   const [questions, setQuestions] = useState([]);
   const [step, setStep] = useState(-1);
   const [currentQuestion, setCurrentQuestion] = useState({
-    questionText: "",
+    question: "",
     hasOptions: false,
     numberOfOptions: 2,
     options: [],
