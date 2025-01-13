@@ -6,6 +6,7 @@ import {
   faEdit,
   faArrowUpFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import { message } from "antd";
 import { useParams } from "react-router-dom";
 import { Mosaic } from "react-loading-indicators";
 import Questionnaire1 from "./template/Quiz/Questionnaire.jsx";
@@ -171,15 +172,18 @@ const Prompt = () => {
       const result = await response.json();
       console.log("Response from backend:", result);
 
-      alert("Questions submitted successfully!");
+      message.success("Questions submitted successfully!");
     } catch (error) {
       console.error("Error posting questions to backend:", error);
-      alert("Failed to submit questions. Please try again.");
+      message.error("Failed to submit questions. Please try again.");
     }
   
     setGeneratedQuestions(questions);
+    console.log(generatedQuestions);
     setShowQuestions(false);
+    console.log(showQuestions)
     setQuestionClicked(false);
+    console.log(questionClicked);
   };
 
   const handleFillQuestions = async (questions) => {
@@ -201,10 +205,10 @@ const Prompt = () => {
       const result = await response.json();
       console.log("Response from backend:", result);
 
-      alert("Questions submitted successfully!");
+      message.success("Questions submitted successfully!");
     } catch (error) {
       console.error("Error posting questions to backend:", error);
-      alert("Failed to submit questions. Please try again.");
+      message.error("Failed to submit questions. Please try again.");
     }
   
     setGeneratedQuestions(questions);
@@ -231,10 +235,10 @@ const Prompt = () => {
       const result = await response.json();
       console.log("Response from backend:", result);
 
-      alert("Questions submitted successfully!");
+      message.success("Questions submitted successfully!");
     } catch (error) {
       console.error("Error posting questions to backend:", error);
-      alert("Failed to submit questions. Please try again.");
+      message.error("Failed to submit questions. Please try again.");
     }
   
     setGeneratedQuestions(questions);
@@ -261,10 +265,10 @@ const Prompt = () => {
       const result = await response.json();
       console.log("Response from backend:", result);
 
-      alert("Questions submitted successfully!");
+      message.success("Questions submitted successfully!");
     } catch (error) {
       console.error("Error posting questions to backend:", error);
-      alert("Failed to submit questions. Please try again.");
+      message.error("Failed to submit questions. Please try again.");
     }
   
     setGeneratedQuestions(questions);

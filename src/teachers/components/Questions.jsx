@@ -14,7 +14,7 @@ const Questions = ({ handleSubmitAll }) => {
     hasOptions: false,
     numberOfOptions: 2,
     options: [],
-    correctAnswer: "",
+    correct_answer: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -57,7 +57,7 @@ const Questions = ({ handleSubmitAll }) => {
   };
 
   const validateCurrentQuestion = () => {
-    if (!currentQuestion.questionText.trim()) {
+    if (!currentQuestion.question.trim()) {
       setErrorMessage("Question text is required.");
       return false;
     }
@@ -87,7 +87,7 @@ const Questions = ({ handleSubmitAll }) => {
       if (step < settings.numberOfQuestions - 1) {
         setStep((prev) => prev + 1);
         setCurrentQuestion({
-          questionText: "",
+          question: "",
           hasOptions: settings.enableOptions,
           numberOfOptions: 2,
           options: settings.enableOptions ? Array(2).fill("") : [],
@@ -141,8 +141,8 @@ const Questions = ({ handleSubmitAll }) => {
           <label className="inputs-label">Question : </label>
           <input
             type="text"
-            name="questionText"
-            value={currentQuestion.questionText}
+            name="question"
+            value={currentQuestion.question}
             onChange={handleChange}
             className="input-field"
             placeholder="Enter question text"
