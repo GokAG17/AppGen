@@ -44,7 +44,7 @@ const Questions = ({ handleSubmitAll }) => {
       ...prev,
       hasOptions: e.target.checked,
       options: e.target.checked ? Array(2).fill("") : [],
-      correctAnswer: e.target.checked ? "" : "",
+      correct_answer: e.target.checked ? "" : "",
     }));
   };
 
@@ -70,11 +70,11 @@ const Questions = ({ handleSubmitAll }) => {
         setErrorMessage("All options must be filled.");
         return false;
       }
-      if (!currentQuestion.correctAnswer.trim()) {
+      if (!currentQuestion.correct_answer.trim()) {
         setErrorMessage("Correct answer must be selected.");
         return false;
       }
-    } else if (!settings.enableOptions && !currentQuestion.correctAnswer.trim()) {
+    } else if (!settings.enableOptions && !currentQuestion.correct_answer.trim()) {
       setErrorMessage("Correct answer is required for open-ended questions.");
       return false;
     }
@@ -91,7 +91,7 @@ const Questions = ({ handleSubmitAll }) => {
           hasOptions: settings.enableOptions,
           numberOfOptions: 2,
           options: settings.enableOptions ? Array(2).fill("") : [],
-          correctAnswer: "",
+          correct_answer: "",
         });
       } else {
         handleSubmitAll([...questions, currentQuestion]);
@@ -193,8 +193,8 @@ const Questions = ({ handleSubmitAll }) => {
                   </div>
                   <label className="inputs-label">Correct Answer:</label>
                   <select
-                    name="correctAnswer"
-                    value={currentQuestion.correctAnswer}
+                    name="correct_answer"
+                    value={currentQuestion.correct_answer}
                     onChange={handleChange}
                     className="input-select"
                     required
@@ -216,8 +216,8 @@ const Questions = ({ handleSubmitAll }) => {
               <label className="inputs-label">Correct Answer:</label>
               <input
                 type="text"
-                name="correctAnswer"
-                value={currentQuestion.correctAnswer}
+                name="correct_answer"
+                value={currentQuestion.correct_answer}
                 onChange={handleChange}
                 className="input-field"
                 placeholder="Enter the correct answer"
