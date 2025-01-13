@@ -10,11 +10,10 @@ const FlashCard = ({ flashcards, onAnswer }) => {
     optionBoxSize: "20px",
     fontColor: "#000",
     fontSize: "16px",
-  }); 
+  });
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
-
     const fetchStyles = async () => {
       try {
         const response = await fetch(
@@ -39,8 +38,8 @@ const FlashCard = ({ flashcards, onAnswer }) => {
   }, []);
 
   useEffect(() => {
-    const { question, answer } = flashcards[currentCardIndex];
-    const message = `Question: ${question}. Answer: ${answer}.`;
+    const { question, correct_answer } = flashcards[currentCardIndex];
+    const message = `Question: ${question}. Answer: ${correct_answer}.`;
 
     // speakText(message);
 
@@ -58,7 +57,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
 
     utterance.onend = () => {
       setIsSpeaking(false);
-      onAnswer(); 
+      onAnswer();
     };
 
     synth.speak(utterance);
@@ -71,7 +70,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
 
     const nextIndex = (currentCardIndex + 1) % flashcards.length;
     setCurrentCardIndex(nextIndex);
-    onAnswer(); 
+    onAnswer();
   };
 
   return (
@@ -94,7 +93,6 @@ const FlashCard = ({ flashcards, onAnswer }) => {
         >
           {flashcards[currentCardIndex].question}
         </h3>
-        <br />
         <h3
           style={{
             backgroundColor: styles.optionBoxColor,
@@ -102,12 +100,9 @@ const FlashCard = ({ flashcards, onAnswer }) => {
             color: styles.fontColor,
           }}
         >
-          {flashcards[currentCardIndex].answer}
+          {flashcards[currentCardIndex].correct_answer}
         </h3>
-        {/* <button
-          onClick={handleNextCard}
-          disabled={isSpeaking} 
-        >
+        {/* <button onClick={handleNextCard} disabled={isSpeaking}>
           next
         </button> */}
       </div>

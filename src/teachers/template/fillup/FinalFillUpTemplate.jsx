@@ -102,12 +102,12 @@ const FinalFillUpTemplate = () => {
   const handleAnswerSubmit = () => {
     const currentFillUp = fillUpData[currentQuestionIndex];
     const normalizedUserAnswer = userAnswer.trim().toLowerCase();
-    const normalizedCorrectAnswer = currentFillUp.answer.trim().toLowerCase();
+    const normalizedCorrectAnswer = currentFillUp.correct_answer.trim().toLowerCase();
 
     if (normalizedUserAnswer === normalizedCorrectAnswer) {
       setFeedback("Correct!");
     } else {
-      setFeedback(`Incorrect! The correct answer is: ${currentFillUp.answer}`);
+      setFeedback(`Incorrect! The correct answer is: ${currentFillUp.correct_answer}`);
     }
 
     setTimeout(() => {

@@ -123,19 +123,21 @@ const RacingGameWithLearning = () => {
   };
 
   const handleMissedCoin = () => {
+    console.log("Missed coin! Triggering flashcard...");
     if (flashcards.length > 0) {
-      const randomCard =
-        flashcards[Math.floor(Math.random() * flashcards.length)];
+      const randomCard = flashcards[Math.floor(Math.random() * flashcards.length)];
+      console.log("Selected flashcard:", randomCard);
       setCurrentFlashcard(randomCard);
       setFlashcardVisible(true);
       setIsGamePaused(true);
-
+  
       const timer = setTimeout(() => {
         handleFlashcardCompletion();
-      }, 7000);
+      }, 1000);
       setFlashcardTimer(timer);
     }
   };
+  
 
   const handleFlashcardCompletion = () => {
     setFlashcardVisible(false);

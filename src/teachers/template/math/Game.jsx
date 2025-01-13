@@ -223,7 +223,7 @@ const Game = () => {
 
     setIsAnswered(true);
     const currentQuestion = questions[currentQuestionIndex];
-    const isCorrect = currentQuestion.answer === options[optionId];
+    const isCorrect = currentQuestion.correct_answer === options[optionId];
 
     if (isCorrect) {
       setScore((prev) => prev + 1);

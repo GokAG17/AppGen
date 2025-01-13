@@ -38,8 +38,8 @@ const FlashCard = ({ flashcards, onAnswer }) => {
   }, []);
 
   useEffect(() => {
-    const { question, answer } = flashcards[currentCardIndex];
-    const message = `Question: ${question}. Answer: ${answer}.`;
+    const { question, correct_answer } = flashcards[currentCardIndex];
+    const message = `Question: ${question}. Answer: ${correct_answer}.`;
 
     // speakText(message);
 
@@ -100,7 +100,7 @@ const FlashCard = ({ flashcards, onAnswer }) => {
             color: styles.fontColor,
           }}
         >
-          {flashcards[currentCardIndex].answer}
+          {flashcards[currentCardIndex].correct_answer}
         </h3>
         {/* <button onClick={handleNextCard} disabled={isSpeaking}>
           next
