@@ -20,7 +20,7 @@ const RacingGameWithLearning = () => {
   const [flashcardTimer, setFlashcardTimer] = useState(null);
   const [direction, setDirection] = useState(1);
   const [score, setScore] = useState(0);
-  const [time, setTime] = useState(400);
+  const [time, setTime] = useState(40);
   const [gameEnded, setGameEnded] = useState(false);
   const [activeButton, setActiveButton] = useState("home");
   const [showCongratsModal, setShowCongratsModal] = useState(false);
@@ -134,7 +134,7 @@ const RacingGameWithLearning = () => {
   
       const timer = setTimeout(() => {
         handleFlashcardCompletion();
-      }, 1000);
+      }, 7000);
       setFlashcardTimer(timer);
     }
   };
