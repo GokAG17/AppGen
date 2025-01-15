@@ -20,7 +20,7 @@ const RacingGameWithLearning = () => {
   const [flashcardTimer, setFlashcardTimer] = useState(null);
   const [direction, setDirection] = useState(1);
   const [score, setScore] = useState(0);
-  const [time, setTime] = useState(40);
+  const [time, setTime] = useState(400);
   const [gameEnded, setGameEnded] = useState(false);
   const [activeButton, setActiveButton] = useState("home");
   const [showCongratsModal, setShowCongratsModal] = useState(false);
@@ -48,7 +48,7 @@ const RacingGameWithLearning = () => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
-
+    console.log("Hello .......");
     const fetchFlashcards = async () => {
       try {
         const response = await fetch(
@@ -63,12 +63,12 @@ const RacingGameWithLearning = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setFlashcards(data);
+        setFlashcards(data.questions);
       } catch (error) {
         console.error("Error fetching flashcards:", error);
       }
     };
-
+    console.log(flashcards);
     fetchFlashcards();
 
     return () => clearTimeout(loadingTimer);
@@ -124,7 +124,8 @@ const RacingGameWithLearning = () => {
 
   const handleMissedCoin = () => {
     console.log("Missed coin! Triggering flashcard...");
-    if (flashcards.length > 0) {
+    console.log(flashcards);
+    if (flashcards) {
       const randomCard = flashcards[Math.floor(Math.random() * flashcards.length)];
       console.log("Selected flashcard:", randomCard);
       setCurrentFlashcard(randomCard);

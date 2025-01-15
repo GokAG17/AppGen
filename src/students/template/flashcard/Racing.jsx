@@ -63,7 +63,7 @@ const RacingGameWithLearning = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setFlashcards(data);
+        setFlashcards(data.questions);
       } catch (error) {
         console.error("Error fetching flashcards:", error);
       }
